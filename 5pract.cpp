@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <random>
@@ -7,15 +7,13 @@
 
 
 void reverse_word(std::string word) {
-    setlocale(LC_ALL, "Russian");
     std::reverse(word.begin(), word.end());
     std::cout << word << std::endl;
 }
 
 void removeVowels(std::string word) {
-    setlocale(LC_ALL, "Russian");
     std::string result = "";
-    const std::string vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ";
+    const std::string vowels = "aeyuioAEYUIO";
     for (char c : word) {
         if (vowels.find(c) == std::string::npos) {
             result += c;
@@ -25,11 +23,10 @@ void removeVowels(std::string word) {
 }
 
 void removeConsonants(std::string word) {
-    setlocale(LC_ALL, "Russian");
     std::string result = "";
     for (char c : word) {
         setlocale(LC_ALL, "Russian");
-        if (!isalpha(c) || strchr("ауёияюэоыеАУЁИЯЮЭО", c) == nullptr) {
+        if (!isalpha(c) || strchr("aeyuioAEYUIO", c) == nullptr) {
             result += c;
         }
     }
@@ -37,7 +34,6 @@ void removeConsonants(std::string word) {
 }
 
 void shuffleWord(std::string word) {
-    setlocale(LC_ALL, "Russian");
     unsigned seed = time(0);
     std::string shuffled = word;
     std::shuffle(shuffled.begin(), shuffled.end(), std::default_random_engine(seed));
@@ -45,7 +41,6 @@ void shuffleWord(std::string word) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Russian");
     std::string word;
     std::cout << "Введите слово: ";
     std::cin >> word;
